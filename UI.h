@@ -24,14 +24,15 @@ public slots:
 	void timeUp();
 	void on_pushButton_clicked();
 private slots:
-    void on_orderBtn_clicked();
+	void on_orderBtn_clicked();
 
 private:
 	Ui::UIClass ui;
 	Icon*** icons;
 	MyHelper helper;
 	void initIcons(int row, int column);	
-	void swap(int row1, int column1, int row2, int column2);
+    bool swapAndDelete(int row1, int column1, int row2, int column2);
+    void swap(int row1, int column1, int row2, int column2);
 	std::vector<Icon*> getPoints(int row, int column);
 	void sleep(int sleepTime);
 	QTimer* timer;
@@ -42,7 +43,12 @@ private:
 	int random;//随机数
 	bool iswait = false;
 	QString initime;
+	bool CheckMapDead(int,int);
+    std::vector<Icon*> Hint(int,int );
+    bool DropUnit(int row, int column);
+    void RandomAdd(int row, int column);  //随机添加 仍待完成
+    bool AutoDelete(int row,int column);
 
 public:
-    OrderView* v;
+	OrderView* v;
 };
